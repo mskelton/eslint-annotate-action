@@ -11,7 +11,7 @@ const {reportFile, onlyChangedFiles, failOnError, failOnWarning, markdownReportO
 
 Toolkit.run(async (tools) => {
   tools.log.info(`Starting analysis of the ESLint report ${reportFile}. Standby...`)
-  const reportJS = eslintJsonReportToJs(reportFile)
+  const reportJS = await eslintJsonReportToJs(reportFile)
   const analyzedReport = onlyChangedFiles
     ? await getPullRequestChangedAnalyzedReport(reportJS)
     : getAnalyzedReport(reportJS)
