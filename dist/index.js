@@ -22909,9 +22909,9 @@ function parseReportFile(reportFile) {
  * @param reportFile path to an ESLint JSON file
  */
 async function eslintJsonReportToJs(reportFile) {
-    console.log('report file', reportFile);
     const globber = await glob.create(reportFile);
     const files = await globber.glob();
+    console.log('files', files);
     return files.map(parseReportFile).flat();
 }
 exports["default"] = eslintJsonReportToJs;
