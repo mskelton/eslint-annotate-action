@@ -10,7 +10,7 @@ import constants from './constants'
 const {reportFile, onlyChangedFiles, failOnError, failOnWarning, markdownReportOnStepSummary} = constants
 
 Toolkit.run(async (tools) => {
-  tools.log.info(`Starting analysis of the ESLint report ${reportFile}. Standby...`)
+  tools.log.info(`Starting analysis of the ESLint report ${reportFile.replace(/\n/g, ', ')}. Standby...`)
   const reportJS = await eslintJsonReportToJs(reportFile)
   const analyzedReport = onlyChangedFiles
     ? await getPullRequestChangedAnalyzedReport(reportJS)

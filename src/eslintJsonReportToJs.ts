@@ -29,7 +29,6 @@ function parseReportFile(reportFile: string) {
 export default async function eslintJsonReportToJs(reportFile: string): Promise<ESLintReport> {
   const globber = await glob.create(reportFile)
   const files = await globber.glob()
-  console.log('files', files)
 
   return files.map(parseReportFile).flat()
 }
